@@ -9,12 +9,12 @@ export default function UserLayout() {
   
   const menuItems = [
     { 
-      label: 'Profile', 
+      label: 'Perfil', 
       path: '/user/profile', 
       icon: <UserCircle className="h-5 w-5" /> 
     },
     { 
-      label: 'Surveys', 
+      label: 'Encuestas', 
       path: '/user/surveys', 
       icon: <ClipboardList className="h-5 w-5" /> 
     }
@@ -26,7 +26,7 @@ export default function UserLayout() {
       
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header 
-          title="Employee Portal" 
+          title="Portal del Empleado" 
           username={user?.username || ''} 
           onLogout={logout} 
         />

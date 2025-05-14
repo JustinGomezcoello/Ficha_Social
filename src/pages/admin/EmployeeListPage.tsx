@@ -1,17 +1,22 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEmployees } from '../../context/EmployeeContext';
 import { Search, Mail, Phone, Calendar } from 'lucide-react';
 
 export default function EmployeeListPage() {
   const { employees } = useEmployees();
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
   
   const filteredEmployees = employees.filter(employee => 
     employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     employee.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
     employee.department.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleEmployeeClick = (id: number) => {
+    navigate(`/admin/employees/${id}`);
+  };
   
   return (
     <div className="container mx-auto">
@@ -57,7 +62,7 @@ export default function EmployeeListPage() {
                 <tr 
                   key={employee.id}
                   className="hover:bg-gray-50 cursor-pointer"
-                  onClick={() => window.location.href = `/admin/employees/${employee.id}`}
+                  onClick={() => handleEmployeeClick(employee.id)}
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">

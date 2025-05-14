@@ -9,7 +9,7 @@ export default function AdminLayout() {
   
   const menuItems = [
     { 
-      label: 'Employees', 
+      label: 'Empleados', 
       path: '/admin/employees', 
       icon: <Users className="h-5 w-5" /> 
     },
@@ -26,7 +26,7 @@ export default function AdminLayout() {
       
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header 
-          title="Admin Panel" 
+          title="Panel de Administración" 
           username={user?.username || ''} 
           onLogout={logout} 
         />
