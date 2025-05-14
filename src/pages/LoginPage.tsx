@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { UserCircle2 } from 'lucide-react';
+import logo_empresa from '../assets/logo_empresa.jpg';
+
+
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -31,9 +33,9 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
         <div>
-          <div className="flex justify-center">
-            <UserCircle2 className="h-20 w-20 text-blue-600" />
-          </div>
+        <div className="flex justify-center">
+          <img src={logo_empresa} alt="Logo Ficha Social" className="h-20 w-20 object-contain" />
+        </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Ficha Social
           </h2>
@@ -64,7 +66,7 @@ export default function LoginPage() {
                 type="text"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Usuario (admin o user)"
+                placeholder="Usuario"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -77,7 +79,7 @@ export default function LoginPage() {
                 type="password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Contraseña (admin o user)"
+                placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -93,11 +95,6 @@ export default function LoginPage() {
             </button>
           </div>
           
-          <div className="text-sm text-center text-gray-500">
-            <p>Credenciales de prueba:</p>
-            <p>Admin: usuario "admin", contraseña "admin"</p>
-            <p>Usuario: usuario "user", contraseña "user"</p>
-          </div>
         </form>
       </div>
     </div>
