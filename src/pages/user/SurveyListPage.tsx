@@ -50,14 +50,14 @@ export default function SurveyListPage() {
                     <div>
                       {isCompleted ? (
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                          Completed
+                          Completada
                         </span>
                       ) : (
                         <Link
                           to={`/user/surveys/${survey.id}`}
                           className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                         >
-                          Take Survey
+                          Realizar encuesta
                         </Link>
                       )}
                     </div>
@@ -70,7 +70,7 @@ export default function SurveyListPage() {
         
         {surveys.length === 0 && (
           <div className="text-center py-10">
-            <p className="text-gray-500">No surveys are currently available.</p>
+            <p className="text-gray-500">No hay encuestas disponibles actualmente.</p>
           </div>
         )}
       </div>

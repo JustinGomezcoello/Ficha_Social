@@ -47,8 +47,8 @@ export default function UserProfilePage() {
     return (
       <div className="container mx-auto">
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Profile Not Found</h2>
-          <p className="text-gray-600">Unable to load your profile information.</p>
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Perfil No Encontrado</h2>
+          <p className="text-gray-600">No se ha podido cargar la información de tu perfil.</p>
         </div>
       </div>
     );
@@ -57,14 +57,14 @@ export default function UserProfilePage() {
   return (
     <div className="container mx-auto">
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">My Profile</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">Mi Perfil</h2>
         
         {isSaved && (
           <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
             <div className="flex">
               <div className="ml-3">
                 <p className="text-sm text-green-700">
-                  Profile successfully updated!
+                  No se ha podido cargar la información de su perfil.
                 </p>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function UserProfilePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                Full Name
+                Nombre y Apellido
               </label>
               <input
                 type="text"
@@ -90,7 +90,7 @@ export default function UserProfilePage() {
             
             <div>
               <label htmlFor="position" className="block text-sm font-medium text-gray-700">
-                Position
+                Posición
               </label>
               <input
                 type="text"
@@ -105,7 +105,7 @@ export default function UserProfilePage() {
             
             <div>
               <label htmlFor="department" className="block text-sm font-medium text-gray-700">
-                Department
+                Departamento
               </label>
               <select
                 name="department"
@@ -115,20 +115,20 @@ export default function UserProfilePage() {
                 value={formData.department}
                 onChange={handleChange}
               >
-                <option value="">Select Department</option>
-                <option value="Engineering">Engineering</option>
-                <option value="Design">Design</option>
+                <option value="">Seleccione Departamento</option>
+                <option value="Engineering">Ingeniería</option>
+                <option value="Design">Diseño</option>
                 <option value="Marketing">Marketing</option>
-                <option value="Management">Management</option>
-                <option value="Analytics">Analytics</option>
-                <option value="Finance">Finance</option>
+                <option value="Management">Gestión</option>
+                <option value="Analytics">Analítica</option>
+                <option value="Finance">Finanzas</option>
                 <option value="HR">HR</option>
               </select>
             </div>
             
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email Address
+                Correo electrónico
               </label>
               <input
                 type="email"
@@ -143,7 +143,7 @@ export default function UserProfilePage() {
             
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                Phone Number
+                Número de Teléfonos
               </label>
               <input
                 type="text"
@@ -172,7 +172,7 @@ export default function UserProfilePage() {
           
           <div>
             <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
-              Biography
+              Biografía
             </label>
             <textarea
               name="bio"
@@ -190,7 +190,7 @@ export default function UserProfilePage() {
               alt="Profile preview" 
               className="w-20 h-20 rounded-full object-cover"
             />
-            <p className="text-sm text-gray-500">Current profile photo preview</p>
+            <p className="text-sm text-gray-500">Vista previa de la foto de perfil actual</p>
           </div>
           
           <div>
@@ -199,7 +199,7 @@ export default function UserProfilePage() {
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               <Save className="h-4 w-4 mr-2" />
-              Save Profile
+              Guardar Perfil
             </button>
           </div>
         </form>

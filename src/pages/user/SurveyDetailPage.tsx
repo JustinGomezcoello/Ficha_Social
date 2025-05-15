@@ -25,14 +25,14 @@ export default function SurveyDetailPage() {
     return (
       <div className="container mx-auto py-8">
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Survey Not Found</h2>
-          <p className="text-gray-600 mb-4">The survey you are looking for does not exist.</p>
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Encuesta no encontrada</h2>
+          <p className="text-gray-600 mb-4">La encuesta que estás buscando no existe.</p>
           <button
             onClick={() => navigate('/user/surveys')}
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Surveys
+            Volver a Encuestas
           </button>
         </div>
       </div>
@@ -104,12 +104,12 @@ export default function SurveyDetailPage() {
           <div className="inline-flex items-center justify-center rounded-full bg-green-100 p-4 mb-6">
             <Check className="h-10 w-10 text-green-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Survey Completed!</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">¡Encuesta completada!</h2>
           <p className="text-gray-600 mb-6">
-            Thank you for completing the {survey.title} survey. Your feedback is valuable to us.
+          Gracias por completar el {survey.title} encuesta. Sus comentarios son valiosos para nosotros.
           </p>
           <p className="text-gray-500 text-sm">
-            You will be redirected to the surveys page in a moment...
+            Serás redirigido a la página de encuestas en un momento...
           </p>
         </div>
       </div>
