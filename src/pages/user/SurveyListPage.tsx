@@ -1,76 +1,63 @@
 import { Link } from 'react-router-dom';
 import { useSurveys } from '../../context/SurveyContext';
-import { ClipboardCheck, Clock } from 'lucide-react';
+import { ClipboardCheck, Clock, Plus } from 'lucide-react';
 
 export default function SurveyListPage() {
   const { surveys, responses } = useSurveys();
   
-  // For demo purposes, we're assuming the current user is employee #1
   const currentEmployeeId = 1;
-  
-  // Get the surveys that the current employee has completed
-  const completedSurveyIds = responses
-    .filter(response => response.employeeId === currentEmployeeId)
-    .map(response => response.surveyId);
+  const totalResponses = responses.filter(response => response.employeeId === currentEmployeeId).length;
   
   return (
     <div className="container mx-auto">
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Encuestas disponibles</h2>
-        <p className="text-gray-600 mb-6">
-        Rellene las siguientes encuestas para ayudarnos a mejorar el entorno de trabajo.
-        </p>
-        
-        <div className="space-y-4">
-          {surveys.map(survey => {
-            const isCompleted = completedSurveyIds.includes(survey.id);
-            
-            return (
-              <div 
-                key={survey.id}
-                className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
-              >
-                <div className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-lg font-medium text-gray-900 mb-1">{survey.title}</h3>
-                      <p className="text-sm text-gray-500 mb-3">{survey.description}</p>
-                      <div className="flex items-center text-sm text-gray-500">
-                        <span className="flex items-center">
-                          <ClipboardCheck className="h-4 w-4 mr-1" />
-                          {survey.questions.length} preguntas
-                        </span>
-                        <span className="mx-2">•</span>
-                        <span className="flex items-center">
-                          <Clock className="h-4 w-4 mr-1" />
-                          ~{Math.ceil(survey.questions.length * 1.5)} minutos
-                        </span>
-                      </div>
-                    </div>
-                    <div>
-                      {isCompleted ? (
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                          Completada
-                        </span>
-                      ) : (
-                        <Link
-                          to={`/user/surveys/${survey.id}`}
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-                        >
-                          Realizar encuesta
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800">Registro de Fichas Sociales</h2>
+            <p className="text-gray-600 mt-1">
+              Total de fichas registradas: {totalResponses}
+            </p>
+          </div>
+          
+          <Link
+            to={`/user/surveys/1`}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+          >
+            <Plus className="h-4 w-4 mr-2" />
+            Nueva Ficha
+          </Link>
         </div>
         
-        {surveys.length === 0 && (
+        <div className="space-y-4">
+          {responses.filter(response => response.employeeId === currentEmployeeId).map((response) => (
+            <div key={response.id} className="border border-gray-200 rounded-lg p-4">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-lg font-medium text-gray-800">
+                    Ficha #{response.id}
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Registrada el {new Date(response.date).toLocaleDateString()}
+                  </p>
+                </div>
+                <Link
+                  to={`/user/surveys/1`}
+                  className="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200"
+                >
+                  <Plus className="h-4 w-4 mr-1" />
+                  Nueva Ficha
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {responses.length === 0 && (
           <div className="text-center py-10">
-            <p className="text-gray-500">No hay encuestas disponibles actualmente.</p>
+            <div className="inline-flex items-center justify-center rounded-full bg-blue-100 p-4 mb-4">
+              <ClipboardCheck className="h-8 w-8 text-blue-600" />
+            </div>
+            <p className="text-gray-500">No hay fichas registradas. ¡Comienza registrando una nueva!</p>
           </div>
         )}
       </div>

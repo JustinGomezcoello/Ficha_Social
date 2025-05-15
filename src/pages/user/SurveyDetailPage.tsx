@@ -8,14 +8,11 @@ export default function SurveyDetailPage() {
   const navigate = useNavigate();
   const { getSurveyById, addSurveyResponse } = useSurveys();
   
-  // Convert ID to number
   const surveyId = parseInt(id || '0', 10);
   const survey = getSurveyById(surveyId);
   
-  // For demo, we're assuming the logged-in user is employee #1
   const currentEmployeeId = 1;
   
-  // State for form answers
   const [answers, setAnswers] = useState<{ questionId: number; answer: string | number }[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,14 +22,14 @@ export default function SurveyDetailPage() {
     return (
       <div className="container mx-auto py-8">
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Encuesta no encontrada</h2>
-          <p className="text-gray-600 mb-4">La encuesta que estás buscando no existe.</p>
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Formulario no encontrado</h2>
+          <p className="text-gray-600 mb-4">El formulario que estás buscando no existe.</p>
           <button
             onClick={() => navigate('/user/surveys')}
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver a Encuestas
+            Volver a Formularios
           </button>
         </div>
       </div>
@@ -78,21 +75,20 @@ export default function SurveyDetailPage() {
   const handleSubmit = () => {
     setIsSubmitting(true);
     
-    // Create a new survey response
     const response = {
       surveyId,
       employeeId: currentEmployeeId,
-      date: new Date().toISOString().split('T')[0], // Format as YYYY-MM-DD
+      date: new Date().toISOString().split('T')[0],
       answers,
     };
     
     addSurveyResponse(response);
-    
-    // Show success message
     setIsComplete(true);
     
-    // Redirect after delay
     setTimeout(() => {
+      setIsComplete(false);
+      setAnswers([]);
+      setCurrentQuestionIndex(0);
       navigate('/user/surveys');
     }, 3000);
   };
@@ -104,12 +100,12 @@ export default function SurveyDetailPage() {
           <div className="inline-flex items-center justify-center rounded-full bg-green-100 p-4 mb-6">
             <Check className="h-10 w-10 text-green-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">¡Encuesta completada!</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">¡Ficha registrada con éxito!</h2>
           <p className="text-gray-600 mb-6">
-          Gracias por completar el {survey.title} encuesta. Sus comentarios son valiosos para nosotros.
+            La información ha sido guardada correctamente.
           </p>
           <p className="text-gray-500 text-sm">
-            Serás redirigido a la página de encuestas en un momento...
+            Serás redirigido para registrar una nueva ficha en un momento...
           </p>
         </div>
       </div>
@@ -123,7 +119,7 @@ export default function SurveyDetailPage() {
         className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 mb-6"
       >
         <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Surveys
+        Volver a Formularios
       </button>
       
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -138,7 +134,7 @@ export default function SurveyDetailPage() {
             ></div>
           </div>
           <p className="text-sm text-gray-500 mt-2">
-            Question {currentQuestionIndex + 1} of {survey.questions.length}
+            Pregunta {currentQuestionIndex + 1} de {survey.questions.length}
           </p>
         </div>
         
@@ -169,37 +165,24 @@ export default function SurveyDetailPage() {
               </div>
             )}
             
-            {currentQuestion.type === 'rating' && currentQuestion.options && (
-              <div className="flex items-center justify-between">
-                {currentQuestion.options.map((option, index) => (
-                  <div key={index} className="text-center">
-                    <button
-                      type="button"
-                      onClick={() => handleInputChange(currentQuestion.id, index + 1)}
-                      className={`w-10 h-10 rounded-full text-sm font-medium ${
-                        getCurrentAnswer(currentQuestion.id) === index + 1
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                    >
-                      {option}
-                    </button>
-                    <span className="block mt-1 text-xs text-gray-500">
-                      {index === 0 ? 'Low' : index === currentQuestion.options!.length - 1 ? 'High' : ''}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
-            
             {currentQuestion.type === 'text' && (
-              <textarea
+              <input
+                type="text"
                 id={`question-${currentQuestion.id}`}
                 value={getCurrentAnswer(currentQuestion.id) as string}
                 onChange={(e) => handleInputChange(currentQuestion.id, e.target.value)}
-                rows={4}
                 className="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                placeholder="Type your answer here..."
+                placeholder="Ingrese su respuesta aquí"
+              />
+            )}
+            
+            {currentQuestion.type === 'date' && (
+              <input
+                type="date"
+                id={`question-${currentQuestion.id}`}
+                value={getCurrentAnswer(currentQuestion.id) as string}
+                onChange={(e) => handleInputChange(currentQuestion.id, e.target.value)}
+                className="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             )}
           </div>
@@ -217,7 +200,7 @@ export default function SurveyDetailPage() {
             }`}
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Previous
+            Anterior
           </button>
           
           {currentQuestionIndex < survey.questions.length - 1 ? (
@@ -231,7 +214,7 @@ export default function SurveyDetailPage() {
                   : 'text-white bg-blue-600 hover:bg-blue-700'
               }`}
             >
-              Next
+              Siguiente
               <ArrowRight className="h-4 w-4 ml-2" />
             </button>
           ) : (
@@ -245,7 +228,7 @@ export default function SurveyDetailPage() {
                   : 'text-white bg-green-600 hover:bg-green-700'
               }`}
             >
-              {isSubmitting ? 'Submitting...' : 'Submit Survey'}
+              {isSubmitting ? 'Guardando...' : 'Guardar Ficha'}
               <Check className="h-4 w-4 ml-2" />
             </button>
           )}

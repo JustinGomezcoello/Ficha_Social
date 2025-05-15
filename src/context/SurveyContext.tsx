@@ -8,7 +8,7 @@ export interface Survey {
   questions: {
     id: number;
     text: string;
-    type: 'multiple_choice' | 'text' | 'rating';
+    type: 'multiple_choice' | 'text' | 'rating' | 'date';
     options?: string[];
   }[];
 }
@@ -36,7 +36,7 @@ interface SurveyContextType {
 const SurveyContext = createContext<SurveyContextType | undefined>(undefined);
 
 export function SurveyProvider({ children }: { children: ReactNode }) {
-  const [surveys, setSurveys] = useState<Survey[]>(initialSurveys);
+  const [surveys] = useState<Survey[]>(initialSurveys);
   const [responses, setResponses] = useState<SurveyResponse[]>(initialResponses);
 
   const addSurveyResponse = (response: Omit<SurveyResponse, 'id'>) => {
