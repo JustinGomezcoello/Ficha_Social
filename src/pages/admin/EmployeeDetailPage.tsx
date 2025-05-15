@@ -25,7 +25,7 @@ export default function EmployeeDetailPage() {
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Employees
+            Volver a Empleados
           </button>
         </div>
       </div>
@@ -39,7 +39,7 @@ export default function EmployeeDetailPage() {
         className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 mb-6"
       >
         <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Employees
+        Volver a Empleados
       </button>
       
       <div className="bg-white rounded-lg shadow-md overflow-hidden mb-6">

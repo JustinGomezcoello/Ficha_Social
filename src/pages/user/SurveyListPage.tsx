@@ -16,9 +16,9 @@ export default function SurveyListPage() {
   return (
     <div className="container mx-auto">
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Available Surveys</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Encuestas disponibles</h2>
         <p className="text-gray-600 mb-6">
-          Complete the following surveys to help us improve the workplace environment.
+        Rellene las siguientes encuestas para ayudarnos a mejorar el entorno de trabajo.
         </p>
         
         <div className="space-y-4">
@@ -38,12 +38,12 @@ export default function SurveyListPage() {
                       <div className="flex items-center text-sm text-gray-500">
                         <span className="flex items-center">
                           <ClipboardCheck className="h-4 w-4 mr-1" />
-                          {survey.questions.length} questions
+                          {survey.questions.length} preguntas
                         </span>
                         <span className="mx-2">•</span>
                         <span className="flex items-center">
                           <Clock className="h-4 w-4 mr-1" />
-                          ~{Math.ceil(survey.questions.length * 1.5)} mins
+                          ~{Math.ceil(survey.questions.length * 1.5)} minutos
                         </span>
                       </div>
                     </div>
