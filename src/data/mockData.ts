@@ -9,7 +9,7 @@ export const employees = [
     photo: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600",
     bio: "Juan es un desarrollador senior con 8 años de experiencia en tecnologías web.",
     joinDate: "2020-03-15",
-    completedSurveys: ["Satisfacción Laboral 2023"]
+    completedSurveys: []
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const employees = [
     photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600",
     bio: "María es una diseñadora creativa enfocada en crear experiencias de usuario atractivas.",
     joinDate: "2021-05-20",
-    completedSurveys: ["Satisfacción Laboral 2023"]
+    completedSurveys: []
   },
   {
     id: 3,
@@ -33,7 +33,31 @@ export const employees = [
     photo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
     bio: "Carlos ha estado gestionando proyectos tecnológicos durante más de 10 años.",
     joinDate: "2019-01-10",
-    completedSurveys: ["Satisfacción Laboral 2023"]
+    completedSurveys: []
+  },
+  {
+    id: 4,
+    name: "Ana Martínez",
+    position: "Analista de Datos",
+    department: "Analytics",
+    email: "ana.martinez@company.com",
+    phone: "+1 (123) 456-7893",
+    photo: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600",
+    bio: "Ana es especialista en análisis de datos y visualización de información.",
+    joinDate: "2022-02-15",
+    completedSurveys: []
+  },
+  {
+    id: 5,
+    name: "Luis Torres",
+    position: "Marketing Digital",
+    department: "Marketing",
+    email: "luis.torres@company.com",
+    phone: "+1 (123) 456-7894",
+    photo: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600",
+    bio: "Luis tiene experiencia en estrategias de marketing digital y redes sociales.",
+    joinDate: "2021-08-20",
+    completedSurveys: []
   }
 ];
 
@@ -70,29 +94,4 @@ export const surveys = [
   }
 ];
 
-export const surveyResponses = [
-  {
-    id: 1,
-    surveyId: 1,
-    employeeId: 1,
-    date: "2023-12-15",
-    answers: [
-      { questionId: 1, answer: 4 },
-      { questionId: 2, answer: 3 },
-      { questionId: 3, answer: "A veces" },
-      { questionId: 4, answer: "Más actividades de integración del equipo." }
-    ]
-  },
-  {
-    id: 2,
-    surveyId: 1,
-    employeeId: 2,
-    date: "2023-12-14",
-    answers: [
-      { questionId: 1, answer: 5 },
-      { questionId: 2, answer: 4 },
-      { questionId: 3, answer: "Sí" },
-      { questionId: 4, answer: "Mejor comunicación entre departamentos." }
-    ]
-  }
-];
+export const surveyResponses = [];
