@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { Menu, X, UserCircle2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface MenuItem {
   label: string;
@@ -36,7 +36,7 @@ export default function Sidebar({ menuItems }: SidebarProps) {
         } md:relative md:translate-x-0 transition duration-200 ease-in-out z-20`}
       >
         <div className="flex items-center justify-center space-x-2 px-4">
-          <UserCircle2 className="h-8 w-8" />
+          <img src="/src/assets/logo_empresa.jpg" alt="Logo Empresa" className="h-8 w-8 rounded-full" />
           <span className="text-xl font-bold">Ficha Social</span>
         </div>
         

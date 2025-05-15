@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import { useAuth } from '../context/AuthContext';
-import { UserCircle, ClipboardList } from 'lucide-react';
+import { ClipboardList } from 'lucide-react';
 
 export default function UserLayout() {
   const { user, logout } = useAuth();
@@ -11,7 +11,7 @@ export default function UserLayout() {
     { 
       label: 'Perfil', 
       path: '/user/profile', 
-      icon: <UserCircle className="h-5 w-5" /> 
+      icon: <img src="/src/assets/logo_empresa.jpg" alt="Logo Empresa" className="h-5 w-5 rounded-full" />
     },
     { 
       label: 'Encuestas', 
